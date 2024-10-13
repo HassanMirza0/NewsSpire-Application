@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NewsSpire - Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div id="logo">
+                <span class="news">NEWS</span><span class="spire">SPIRE</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="/?q=all&pageno=1">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=world&pageno=1">World News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=local&pageno=1">Local News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=sports&pageno=1">Sports</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=technology&pageno=1">Technology</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=entertainment&pageno=1">Entertainment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=politics&pageno=1">Politics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=business&pageno=1">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=health&pageno=1">Health</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="d-flex align-items-center login-container">
+        <div class="login-box">
+            <h3 class="text-center">Login to <span style="color: red;">News</span>Spire</h3>
+            <form action="/login" method="POST" class="row g-4 needs-validation" novalidate  autocomplete="off">
+
+                <!-- Username Field with Icon -->
+                <div class="col-12">
+                    <label for="username" class="form-label">Username<span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                        <input type="text" class="form-control" id="username" name="userName"
+                            placeholder="Enter your username" required>
+                        <div class="invalid-feedback">Please enter your username.</div>
+                    </div>
+                </div>
+
+                <!-- Password Field with Icon -->
+                <div class="col-12">
+                    <label for="password" class="form-label">Password<span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Enter your password" required>
+                        <div class="invalid-feedback">Please enter your password.</div>
+                    </div>
+                </div>
+
+                <!-- Remember Me Checkbox -->
+                <div class="col-sm-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe" required>
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                        <div class="invalid-feedback">Please accept the terms to continue.</div>
+                    </div>
+                </div>
+
+                <!-- Forgot Password -->
+                <div class="col-sm-6 text-end">
+                    <a href="/forgot-password" class="text-danger">Forgot Password?</a>
+                </div>
+                <!-- Display error message if provided -->
+                <% if (typeof errorMessage !=='undefined' ) { %>
+                    <div class="alert alert-danger">
+                        <%= errorMessage %>
+                    </div>
+                    <% } %>
+                        <!-- Submit Button -->
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-danger w-100">Login</button>
+                        </div>
+            </form>
+
+            <!-- Signup Link -->
+            <p class="mt-3 text-center">Don't have an account? <a href="/register">Sign up here</a></p>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+
+
+    <!-- Bootstrap JS -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Bundle with Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

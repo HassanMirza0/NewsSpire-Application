@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NewsSpire</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+    
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div id="logo">
+                <span class="news">NEWS</span><span class="spire">SPIRE</span>
+              </div>
+              
+            <!-- <a class="navbar-brand" href="/?q=all&pageno=1">NewsSpire</a> -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="/?q=All&pageno=1">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=world&pageno=1">World News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=local&pageno=1">Local News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=sports&pageno=1">Sports</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=technology&pageno=1">Technology</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=entertainment&pageno=1">Entertainment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=politics&pageno=1">Politics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=business&pageno=1">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/?q=health&pageno=1">Health</a></li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" name="pageno" value="1" type="hidden">
+                    <button class="btn btn-outline-danger" type="submit" style="color: black;">Search</button>
+                    <% if (isLoggedIn) { %>
+                        <a class="btn btn-outline-danger ms-2" href="/logout">Logout</a>
+                    <% } else { %>
+                        <a class="btn btn-outline-danger ms-2" href="/login">Login</a>
+                    <% } %>
+                
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main News Section -->
+    <h1 class="text-center my-4"><span id="queryText"></span> - NewsSpire News (<span id="queryResult"></span> results)</h1>
+    <div class="text-center my-2">
+        <h5 class="fw-medium" id="paginationInfo"></h5>
+    </div>
+
+    <div class="container my-4">
+        <div id="content" class="row mx-auto my-4">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-center my-3">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a id="prev" class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a id="f" class="page-link" href="#">1</a></li>
+                <li class="page-item"><a id="s" class="page-link" href="#">2</a></li>
+                <li class="page-item"><a id="th" class="page-link" href="#">3</a></li>
+                <li class="page-item"><a id="next" class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Carousel Section -->
+    <div class="container mt-5">
+        <h1 class="my-4">Today's Viral News</h1>
+        <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="newsCards">
+                <!-- News cards will be injected here dynamically -->
+            </div>
+            <button class="carousel-control-prev my-2" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-light">
+        <d fw-mediumiv class="container p-4">
+            <div class="row mt-4">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>News Categories</h5>
+                    <ul class="list-unstyled fw-medium" class="red">
+                        <li><a href="#">Latest News</a></li>
+                        <li><a href="#">World News</a></li>
+                        <li><a href="#">Politics</a></li>
+                        <li><a href="#">Tech</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Customer Services</h5>
+                    <ul class="list-unstyled fw-medium" class="red">
+                        <!-- <li><a href="#">Delivery Info</a></li> -->
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" class="red">
+                    <h5>Get in Touch</h5>
+                    <ul class="list-unstyled fw-medium">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4" class="red">
+                    <h5>Follow Us</h5>
+                    <ul class="list-unstyled fw-medium">
+                        <li><a href="https://www.facebook.com/profile.php?id=100022923674486">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/hassan._mirza/">Instagram</a></li>
+                        <li><a href="https://www.linkedin.com/in/hassanmirza12/">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Bundle with Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+        <script src="/js/script.js"></script>
+    </body>
+    
+</html>

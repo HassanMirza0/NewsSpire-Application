@@ -1,0 +1,337 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    /* color: #ffc107; */
+    margin-bottom: 0.5em;
+}
+
+/* Logo Styling */
+#logo {
+    font-size: 2.5rem;
+    color: red;
+    font-weight: normal;
+}
+
+#logo span {
+    font-weight: bold;
+    color: black;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #343a40;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav-link {
+    color: #000000 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.navbar .nav-link:hover {
+    /* background-color:rgba(255, 0, 0, 0.864); */
+    text-decoration: underline;
+}
+
+.navbar .navbar-toggler {
+    border-color: #000000;
+}
+
+.navbar .navbar-toggler-icon {
+    background-color: #ffffff;
+
+}
+#navbarSupportedContent{
+    margin: 0px 12px;
+}
+.class li a{
+    color: red;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 1rem;
+    transition: transform 0.2s ease-in-out;
+    min-width: 250px;
+    max-width: 300px;
+    background-color: white;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+}
+
+.card-text {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+/* Cards Wrapper */
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 0.25rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: red;
+    transform: translateY(-3px);
+}
+
+/* .btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.6);
+} */
+
+/* Pagination Styling */
+.pagination .page-link {
+    background-color: #f8f9fa;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #3498db;
+    color: white;
+}
+
+.pagination .page-link:hover {
+    background-color:red;
+    color: black;
+}
+
+
+
+/* Carousel Styling */
+.carousel-inner {
+    padding: 1em;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: #3498db;
+    width: 6vh;
+    height: 6vh;
+    border-radius: 50%;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+/* Footer Styling */
+footer {
+    background-color:wh;
+    color: #ff0000;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer .footer-content {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+footer .footer-content a {
+    color: #ff0000;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* footer .footer-content a:hover {
+    color: #ffbf00;
+} */
+
+footer .footer-social {
+    margin-top: 1rem;
+}
+
+footer .footer-social a {
+    color:red;
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    margin: 0 1rem;
+    transition: color 0.3s;
+}
+
+/* footer .footer-social a:hover {
+    color: #ffc107;
+} */
+
+footer a {
+    color: rgb(0, 0, 0) !important; /* Set the anchor color to red */
+    text-decoration: none; /* Remove underline from links */
+}
+
+footer a:hover {
+    color: #ff6347; /* Darker red shade when hovered */
+    text-decoration: underline; /* Add underline on hover */
+}
+/* General Links */
+a {
+    text-decoration: none;
+    color: rgb(0, 0, 0)
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+#logo {
+    font-size: 3rem; /* Increase the font size for the logo */
+    font-weight: normal;
+}
+
+#logo .news {
+    color: red; /* Red color for NEWS */
+    font-weight: bold; /* Bold for NEWS */
+}
+
+#logo .spire {
+    color: black; /* Black color for SPIRE */
+    font-weight: bold; /* Bold for SPIRE */
+}
+
+/* Login page */
+
+.login-container {
+    height: 100vh;
+}
+
+.login-box {
+    max-width: 400px;
+    margin: auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.login-box h3 {
+    color: black;
+    font-family: 'Oswald', sans-serif;
+}
+
+.btn-newsspire {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.btn-newsspire:hover {
+    background-color: #000;
+    color: #dc3545;
+}
+
+.form-control:focus {
+    border-color: black;
+    box-shadow: none;
+}
+
+a {
+    color: #dc3545;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #000;
+}
+
+/* Register page */
+
+.register-box h3 {
+    color: black;
+    font-family: 'Oswald', sans-serif;
+}
+
+.register-container {
+    height: 100vh;
+}
+
+.register-box {
+    max-width: 400px;
+    margin: auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-group-text i {
+    color: black;
+}
+
+.form-label {
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    padding-left: 2.5rem;
+}
+
+.row .col-6 {
+    padding-right: 0.5rem;
+}
+
+.row .col-6:last-child {
+    padding-left: 0.5rem;
+}
