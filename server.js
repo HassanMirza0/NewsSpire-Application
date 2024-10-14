@@ -22,18 +22,18 @@ app.use(express.urlencoded({ extended: true }));
 
 // Session middleware with MongoDB session store
 app.use(session({
-  secret: process.env.SESSION_SECRET, // Secret key to sign the session ID cookie
-  resave: false, // Do not save session if unmodified
-  saveUninitialized: false, // Don't save new uninitialized sessions
+  secret: process.env.SESSION_SECRET,  // Your session secret
+  resave: false,  // Don't resave session if unmodified
+  saveUninitialized: false,  // Don't save uninitialized sessions
   store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_URI, // MongoDB URI
-    collectionName: 'sessions', // MongoDB collection name where sessions will be stored
-    ttl: 24 * 60 * 60, // Set session expiration time (24 hours)
+    mongoUrl: process.env.MONGODB_URI,  // MongoDB connection string
+    collectionName: 'sessions',  // Collection name in MongoDB
+    ttl: 24 * 60 * 60  // 1 day expiration for session
   }),
   cookie: {
-    secure: process.env.NODE_ENV === 'production', // Use HTTPS in production for secure cookies
-    sameSite: 'strict', // Prevent cross-site request forgery (CSRF) attacks
-    maxAge: 1000 * 60 * 60 * 24, // 1 day expiration
+    secure: process.env.NODE_ENV === 'production',  // Secure cookie in production (HTTPS)
+    sameSite: 'strict',  // Helps prevent CSRF attacks
+    maxAge: 1000 * 60 * 60 * 24  // Session cookie expiration (1 day)
   }
 }));
 
