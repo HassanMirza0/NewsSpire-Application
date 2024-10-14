@@ -11,5 +11,4 @@ const userSchema = new mongoose.Schema({
 });
 
 // Export the User model based on the user schema
-userSchema.index({ userName: 1 }); // Index `userName` to speed up querie
 module.exports = mongoose.model('User', userSchema);
