@@ -31,9 +31,9 @@ exports.postLogin = async (req, res) => {
 
          
           if (isMatch) {
-                     req.session.user = user;
-                      console.log("Redirecting user to:", req.session.redirectTo || '/');
-                      return res.redirect(req.session.redirectTo || '/');
+                req.session.user = user; // Store user in session
+                console.log("Session set:", req.session); // Log session data for debugging
+                return res.redirect('/'); // Redirect to the homepage
                }
 
             }  else {
