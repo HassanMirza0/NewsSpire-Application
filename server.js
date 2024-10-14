@@ -10,7 +10,7 @@ const authRoutes = require('./src/routes/authRoutes'); // Import routes for auth
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware to serve static files
+// Middleware to serve static file
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set view engine and views directory
