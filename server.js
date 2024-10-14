@@ -10,8 +10,8 @@ const authRoutes = require('./src/routes/authRoutes'); // Import routes for auth
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware to serve static file
-app.use(express.static(path.join(__dirname, 'public')));
+// Middleware to serve static files
+app.use(express.static('public'));
 
 // Set view engine and views directory
 app.set('views', path.join(__dirname, 'src', 'views'));
@@ -67,10 +67,8 @@ app.get('/api/viral-news', async (req, res) => {
 
 // Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGODB_URI, {
-   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  ssl: true, // Ensure SSL is used
-  serverSelectionTimeoutMS: 50000, // Increase timeout to 50 seconds
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
 })
   .then(() => {
     console.log('Connected to MongoDB Atlas');
