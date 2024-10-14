@@ -38,9 +38,9 @@ exports.postLogin = async (req, res) => {
                 console.log("Session after login:", req.session);
 
                 // Handle redirect
-                // const redirectTo = req.session.redirectTo || '/'; // Default to home if no saved URL
-                // delete req.session.redirectTo; // Clear the redirect URL after use
-                return res.redirect('/');
+                const redirectTo = req.session.redirectTo || '/'; // Default to home if no saved URL
+                delete req.session.redirectTo; // Clear the redirect URL after use
+                return res.redirect(redirectTo);
             } else {
                 // If password is incorrect, redirect to login page
                 return res.render('login', { errorMessage: 'Invalid username or password.' });
