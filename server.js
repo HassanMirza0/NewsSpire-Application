@@ -3,6 +3,7 @@ const path = require('path');
 const axios = require('axios');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const MongoStore = require('connect-mongo'); // Import connect-mongo for MongoDB session store
 require('dotenv').config(); // Load environment variables
 const authRoutes = require('./src/routes/authRoutes'); // Import routes for authentication
 
@@ -19,20 +20,22 @@ app.set('view engine', 'ejs');
 // Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
 
-
-
-
+// Session middleware with MongoDB session store
 app.use(session({
   secret: process.env.SESSION_SECRET, // Secret used to sign the session ID cookie
   resave: false, // Do not save session data if session is unmodified
   saveUninitialized: false, // Do not save new, uninitialized sessions
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI, // Use the MongoDB URI from environment variables
+    collectionName: 'sessions', // Name of the collection to store sessions
+    ttl: 24 * 60 * 60 // Session expiration time in seconds (1 day)
+  }),
   cookie: { 
-      secure: process.env.NODE_ENV === 'production', // Secure cookie in production environment
-      sameSite: 'strict' // Mitigate CSRF attacks by preventing cross-origin access
+    secure: process.env.NODE_ENV === 'production', // Secure cookie in production environment
+    sameSite: 'strict', // Mitigate CSRF attacks by preventing cross-origin access
+    maxAge: 1000 * 60 * 60 * 24 // 1 day
   }
 }));
-
-
 
 // News API endpoint
 app.get('/api', async (req, res) => {
@@ -47,10 +50,10 @@ app.get('/api', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch news' });
   }
 });
+
 app.get('/api/viral-news', async (req, res) => {
   try {
     const apiKey = '698b363525234412b0811509433adde4'; // Your NewsAPI key
-    // const apiKey = 'e6965d3a8fe84783ac777ba7f530c643'; // Your NewsAPI key
     const url = `https://newsapi.org/v2/top-headlines?country=us&category=general&pageSize=24&apiKey=${apiKey}`;
     
     const response = await axios(url);
@@ -61,6 +64,7 @@ app.get('/api/viral-news', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 // Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGODB_URI, {
   // useNewUrlParser: true,
