@@ -1,6 +1,6 @@
 const express = require('express')
 const router=express.Router()
-const authController=require('../controllers/authController')
+const authController=require('../controllers/authcontroller')
 const authMiddleware = require('../middleware/auth'); 
 
 
@@ -14,7 +14,7 @@ router.get('/logout', authController.logout);
 router.get('/forgot-password', authController.getForgotPassword);
 
 // Route to handle submission of forgot password form
-router.post('/forgot-password', authController.postForgotPassword);
+router.post('/forgot-password', authController.postForgotPassword); 
 
 // Route to show reset password form
 router.get('/reset-password', authController.getResetPassword);
