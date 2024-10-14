@@ -70,6 +70,7 @@ mongoose.connect(process.env.MONGODB_URI, {
    useNewUrlParser: true,
   useUnifiedTopology: true,
   ssl: true, // Ensure SSL is used
+  serverSelectionTimeoutMS: 50000, // Increase timeout to 50 seconds
 })
   .then(() => {
     console.log('Connected to MongoDB Atlas');
