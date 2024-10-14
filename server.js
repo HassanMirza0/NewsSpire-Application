@@ -67,8 +67,9 @@ app.get('/api/viral-news', async (req, res) => {
 
 // Connect to MongoDB Atlas
 mongoose.connect(process.env.MONGODB_URI, {
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true,
+   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  ssl: true, // Ensure SSL is used
 })
   .then(() => {
     console.log('Connected to MongoDB Atlas');
