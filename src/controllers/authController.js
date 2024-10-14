@@ -22,7 +22,7 @@ exports.postLogin = async (req, res) => {
 
     try {
         // Find user by username
-              const user = await User.findOne({ userName }).exec(); // Ensure there's an index on `userName`
+              const user = await User.findOne({ userName }); // Ensure there's an index on `userName`
       
 
         if (user) {
