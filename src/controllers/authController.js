@@ -22,12 +22,12 @@ exports.postLogin = async (req, res) => {
 
     try {
         // Find user by username
+              const user = await User.findOne({ userName }).exec(); // Ensure there's an index on `userName`
       
 
         if (user) {
             // Compare the provided password with the hashed password stored in the database
             const isMatch = await bcrypt.compare(password, user.password)
-              const user = await User.findOne({ userName }).exec(); // Ensure there's an index on `userName`
 
          
             if (isMatch) {
