@@ -31,7 +31,7 @@ app.use(session({
     ttl: 24 * 60 * 60  // 1 day expiration for session
   }),
   cookie: {
-    secure: process.env.NODE_ENV === 'production',  // Secure cookie in production (HTTPS)
+    secure: true,  // Secure cookie in production (HTTPS)
     sameSite: 'strict',  // Helps prevent CSRF attacks
     maxAge: 1000 * 60 * 60 * 24  // Session cookie expiration (1 day)
   }
