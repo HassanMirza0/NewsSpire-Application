@@ -4,7 +4,7 @@ const authController=require('../controllers/authController')
 const authMiddleware = require('../middleware/auth'); 
 
 
-router.get('/',authController.getHomepage)
+router.get('/',authMiddleware,authController.getHomepage)
 router.get('/login',authController.getLogin)
 router.post('/login',authController.postLogin)
 router.get('/register',authController.getRegister)
