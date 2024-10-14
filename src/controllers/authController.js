@@ -30,20 +30,18 @@ exports.postLogin = async (req, res) => {
             const isMatch = await bcrypt.compare(password, user.password)
 
          
-            if (isMatch) {
-                // If login is successful, redirect to your news page
-                req.session.user = user;
-                 // Redirect to the originally requested page or homepage
-                 const redirectTo = req.session.redirectTo || '/'; // Default to home if no saved URL
-                 delete req.session.redirectTo; // Clear the redirect URL after use
-                 return res.redirect(redirectTo);
-                
-                // Redirect to homepage with query parameters after successful login
-            return res.redirect('/');
-               
+           if (isMatch) {
+                // If login is successful, store the user in session
+                req.session.user = user; // Save user object in session
 
+                // Log session to confirm user data is stored
+                console.log("Session after login:", req.session);
 
-            } else {
+                // Handle redirect
+                const redirectTo = req.session.redirectTo || '/'; // Default to home if no saved URL
+                delete req.session.redirectTo; // Clear the redirect URL after use
+                return res.redirect(redirectTo);
+            }  else {
                 // If password is incorrect, redirect to login page
                 return res.render('login', { errorMessage: 'Invalid username or password.' });
             }
