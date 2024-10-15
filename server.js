@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Session middleware with MongoDB session store
 app.use(session({
-  secret: process.env.SESSION_SECRET,  // Your session secret
+  secret: process.env.SESSION_SECRET || 'password',
   resave: false,  // Don't resave session if unmodified
   saveUninitialized: false,  // Don't save uninitialized sessions
   store: MongoStore.create({
