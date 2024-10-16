@@ -16,6 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Set view engine and views directory
 app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
+app.set('trust proxy', 1);  // Trust the first proxy in front of your app (e.g., Heroku, Nginx, etc.)
 
 // Middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
