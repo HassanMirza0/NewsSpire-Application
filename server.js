@@ -22,21 +22,23 @@ app.use(express.urlencoded({ extended: true }));
 
 // Session middleware with MongoDB session store
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'password',
+  secret: process.env.SESSION_SECRET || 'password',  // Use a strong secret in production
   resave: false,  // Don't resave session if unmodified
   saveUninitialized: false,  // Don't save uninitialized sessions
   store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_URI,  // MongoDB connection string
-    collectionName: 'sessions',  // Collection name in MongoDB
-    ttl: 24 * 60 * 60  // 1 day expiration for session
+    mongoUrl: process.env.MONGODB_URI,  // MongoDB connection string from environment variable
+    collectionName: 'sessions',  // MongoDB collection for storing sessions
+    ttl: 24 * 60 * 60  // Session expiration (1 day)
   }),
   cookie: {
-     path: '/',
-    secure: process.env.NODE_ENV === 'production',  // Secure cookie in production (HTTPS)
-    sameSite: 'strict',  // Helps prevent CSRF attacks
+    path: '/',
+    secure: process.env.NODE_ENV === 'production',  // Use secure cookies only in production (HTTPS)
+    httpOnly: true,  // Prevents access to cookie via client-side JavaScript
+    sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax',  // CSRF protection; 'lax' for development
     maxAge: 1000 * 60 * 60 * 24  // Session cookie expiration (1 day)
   }
 }));
+
 
 // News API endpoint
 app.get('/api', async (req, res) => {
