@@ -18,22 +18,28 @@ exports.getLogin = (req, res) => {
 
 // Handle login logic
 exports.postLogin = async (req, res) => {
-    const { userName, password } = req.body
+    const { userName, password } = req.body;
 
     try {
         // Find user by username
-        // const user = await User.findOne({ userName })
         const user = await User.findOne({ userName }).exec();
 
         if (user) {
             // Compare the provided password with the hashed password stored in the database
-            const isMatch = await bcrypt.compare(password, user.password)
+            const isMatch = await bcrypt.compare(password, user.password);
 
-         
             if (isMatch) {
                 // If login is successful, store the user in session
-                req.session.user = user; // Save user object in session
+                req.session.user = {
+                    id: user._id,
+                    userName: user.userName,
+                    email: user.email
+                    // Store only relevant fields, avoid storing sensitive data like password
+                };
 
+                // No need to call `req.session.save()` manually unless you want the session
+                // saved before the response is sent, which is rarely needed.
+                
                 // Log session to confirm user data is stored
                 console.log("Session after login:", req.session);
 
@@ -42,7 +48,7 @@ exports.postLogin = async (req, res) => {
                 delete req.session.redirectTo; // Clear the redirect URL after use
                 return res.redirect(redirectTo);
             } else {
-                // If password is incorrect, redirect to login page
+                // If password is incorrect, render login with error
                 return res.render('login', { errorMessage: 'Invalid username or password.' });
             }
         } else {
@@ -51,10 +57,11 @@ exports.postLogin = async (req, res) => {
         }
 
     } catch (error) {
-        console.log("Error logging in:", error)
-        res.status(500).send('Error logging in')
+        console.log("Error logging in:", error);
+        res.status(500).send('Error logging in');
     }
-}
+};
+
 
 // Render register page
 exports.getRegister = (req, res) => {
