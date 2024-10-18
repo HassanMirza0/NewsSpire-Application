@@ -28,18 +28,11 @@ exports.postLogin = async (req, res) => {
             // Compare the provided password with the hashed password stored in the database
             const isMatch = await bcrypt.compare(password, user.password);
 
-            if (isMatch) {
+           if (isMatch) {
                 // If login is successful, store the user in session
-                req.session.user = {
-                    id: user._id,
-                    userName: user.userName,
-                    email: user.email
-                    // Store only relevant fields, avoid storing sensitive data like password
-                };
+                req.session.user = user; // Save user object in session
+                req.session.save(); // Save the session to the database
 
-                // No need to call `req.session.save()` manually unless you want the session
-                // saved before the response is sent, which is rarely needed.
-                
                 // Log session to confirm user data is stored
                 console.log("Session after login:", req.session);
 
@@ -47,6 +40,11 @@ exports.postLogin = async (req, res) => {
                 const redirectTo = req.session.redirectTo || '/'; // Default to home if no saved URL
                 delete req.session.redirectTo; // Clear the redirect URL after use
                 return res.redirect(redirectTo);
+            } 
+                // Log session to confirm user data is stored
+                // console.log("Session after login:", req.session);
+                // Handle redirect
+             
             } else {
                 // If password is incorrect, render login with error
                 return res.render('login', { errorMessage: 'Invalid username or password.' });
