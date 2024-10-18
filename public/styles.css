@@ -1,74 +1,92 @@
 /* Global Styles */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
-    margin: 0;
-    padding: 0;
+* {
+
     box-sizing: border-box;
+    /* outline: 1px solid red; */
+    /* This will outline every element, helping you see which ones are overflowing */
+    font-family: 'Roboto', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Oswald', sans-serif;
-    /* color: #ffc107; */
-    margin-bottom: 0.5em;
+body {
+    background-color: #fff;
+    color: #333;
+    /* overflow-x: hidden; Prevents horizontal scroll */
 }
 
-/* Logo Styling */
-#logo {
-    font-size: 2.5rem;
-    color: red;
-    font-weight: normal;
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+    /* Ensures full use of the viewport without overflow */
 }
 
-#logo span {
-    font-weight: bold;
-    color: black;
-}
 
-/* Navbar Styling */
+
+
 .navbar {
     background-color: #343a40;
     padding: 1rem 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow:0 4px 8px rgb(0 0 0 /50%);
+    position: relative;
 }
 
 .navbar .nav-link {
-    color: #000000 !important;
+    color: #000000 ;
     font-weight: 500;
     padding: 0.5rem 1rem;
     transition: color 0.3s, background-color 0.3s;
 }
 
 .navbar .nav-link:hover {
-    /* background-color:rgba(255, 0, 0, 0.864); */
     text-decoration: underline;
 }
 
+/* Adjust navbar-toggler styles */
 .navbar .navbar-toggler {
-    border-color: #000000;
+    border-color: black;
+    border-radius: 10px;
+    border-width: 2px;
 }
 
 .navbar .navbar-toggler-icon {
-    background-color: #ffffff;
+    width: 1.7rem;
+    height: 1.3rem;
+    background-color: #f8f9fa;
+}
 
+/* Logo styling */
+#logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 800;
 }
-#navbarSupportedContent{
-    margin: 0px 12px;
+
+#logo .news {
+    color: #dc3545;;
 }
-.class li a{
-    color: red;
+
+#logo .spire {
+    color: rgb(0, 0, 0);
+}
+
+/* Navbar collapse behavior */
+
+
+.class li a {
+    color:#dc3545;;
 }
 
 /* Card Styling */
 .card {
+    margin-bottom: 20px;
     border: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin: 1rem;
     transition: transform 0.2s ease-in-out;
     min-width: 250px;
-    max-width: 300px;
+    max-width: 100%;
     background-color: white;
 }
 
@@ -77,7 +95,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #333;
     margin-bottom: 1rem;
 }
@@ -105,6 +123,12 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     gap: 1.5rem;
     padding: 2rem 0;
+    max-width: 100%;
+}
+
+img, iframe {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Button Styling */
@@ -120,35 +144,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-    background-color: red;
+    background-color: #dc3545;
     transform: translateY(-3px);
 }
-
-/* .btn-primary:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(255, 193, 7, 0.6);
-} */
 
 /* Pagination Styling */
 .pagination .page-link {
     background-color: #f8f9fa;
     color: black;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+    padding: 0.3rem 1rem;
+    border-radius: 0.5rem;
     transition: background-color 0.3s, color 0.3s;
-}
+    margin: 1px;
 
-.pagination .page-item.active .page-link {
-    background-color: #3498db;
-    color: white;
 }
 
 .pagination .page-link:hover {
-    background-color:red;
-    color: black;
+    background-color:#dc3545;;
+    color: rgb(255, 255, 255);
 }
-
-
 
 /* Carousel Styling */
 .carousel-inner {
@@ -172,7 +186,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Footer Styling */
 footer {
-    background-color:wh;
+    background-color: white;
     color: #ff0000;
     padding: 2rem 0;
     text-align: center;
@@ -195,64 +209,55 @@ footer .footer-content a {
     transition: color 0.3s;
 }
 
-/* footer .footer-content a:hover {
-    color: #ffbf00;
-} */
-
 footer .footer-social {
     margin-top: 1rem;
 }
 
 footer .footer-social a {
-    color:red;
+    color: #dc3545;;
     font-size: 1.5rem;
     text-decoration: none;
-
     margin: 0 1rem;
     transition: color 0.3s;
 }
 
-/* footer .footer-social a:hover {
-    color: #ffc107;
-} */
-
 footer a {
-    color: rgb(0, 0, 0) !important; /* Set the anchor color to red */
-    text-decoration: none; /* Remove underline from links */
+    color: rgb(0, 0, 0) !important;
+    text-decoration: none;
 }
 
 footer a:hover {
-    color: #ff6347; /* Darker red shade when hovered */
-    text-decoration: underline; /* Add underline on hover */
+    color: #ff6347;
+    text-decoration: underline;
 }
+
 /* General Links */
 a {
     text-decoration: none;
-    color: rgb(0, 0, 0)
+    color: rgb(0, 0, 0);
 }
 
 a:hover {
     text-decoration: underline;
 }
 
-
-#logo {
-    font-size: 3rem; /* Increase the font size for the logo */
+/* Logo */
+/* #logo {
+    font-size: 3rem;
     font-weight: normal;
 }
 
 #logo .news {
-    color: red; /* Red color for NEWS */
-    font-weight: bold; /* Bold for NEWS */
+    color: red;
+    font-weight: bold;
 }
 
 #logo .spire {
-    color: black; /* Black color for SPIRE */
-    font-weight: bold; /* Bold for SPIRE */
-}
+    color: black;
+    font-weight: bold;
+} */
 
 /* Login page */
-
 .login-container {
     height: 100vh;
 }
@@ -297,7 +302,6 @@ a:hover {
 }
 
 /* Register page */
-
 .register-box h3 {
     color: black;
     font-family: 'Oswald', sans-serif;
@@ -334,4 +338,108 @@ a:hover {
 
 .row .col-6:last-child {
     padding-left: 0.5rem;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+    /* Adjust Navbar for tablets */
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar .nav-link {
+        font-size: 1rem;
+    }
+
+    #logo {
+        font-size: 2rem;
+    }
+
+    /* Adjust cards for tablets */
+    .card {
+        width: 90%;
+        margin: 1rem auto;
+    }
+
+    .cards-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Adjust carousel for smaller screens */
+    .carousel-inner {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 30px;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    /* Navbar on small screens */
+    .navbar-nav {
+        text-align: start;
+        margin-top: 10px;
+    }
+
+    #logo {
+        font-size: 2rem;
+    }
+
+    /* Adjust form container */
+    .login-box,
+    .register-box {
+        max-width: 350px;
+        padding: 1rem;
+    }
+
+    /* Cards on smaller screens */
+    .carousel-item {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    input[type="search"] {
+        padding: 0.1rem 0.3rem; /* Adjust padding */
+        width: 100%; /* Full width on small screens */
+    }
+
+    button[type="submit"] {
+        font-size :0.90 rem; ;
+        padding: 0rem 0.30rem; /* Adjust padding */
+        width: 50%;  /* Full width for button */
+    }
+    .card {
+        margin-bottom: 15px;
+        /* Reduce card size for small screens */
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+
+    /* Adjust Navbar for mobile */
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar .nav-link {
+        font-size: 1rem;
+    }
+
+    #logo {
+        font-size: 1.6rem;
+    }
 }
