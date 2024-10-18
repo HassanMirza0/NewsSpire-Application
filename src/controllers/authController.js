@@ -49,16 +49,13 @@ exports.postLogin = async (req, res) => {
                 // If password is incorrect, render login with error
                 return res.render('login', { errorMessage: 'Invalid username or password.' });
             }
-        } else {
-            // If user not found, return error message on login page
-            return res.render('login', { errorMessage: 'Invalid username or password.' });
         }
-
-    } catch (error) {
-        console.log("Error logging in:", error);
-        res.status(500).send('Error logging in');
-    }
-};
+    
+          catch (error) {
+               console.log("Error logging in:", error);
+               res.status(500).send('Error logging in');
+          }
+     };
 
 
 // Render register page
