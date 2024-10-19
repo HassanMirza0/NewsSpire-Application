@@ -407,6 +407,13 @@ a:hover {
 }
 
 @media (max-width: 576px) {
+
+       #logo{
+    
+        font-size: 1rem;
+        font-weight: 700;
+    }
+
     input[type="search"] {
         padding: 0.1rem 0.3rem; /* Adjust padding */
         width: 100%; /* Full width on small screens */
